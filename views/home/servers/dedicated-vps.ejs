@@ -1,0 +1,87 @@
+<%- include('../../partial/header.ejs') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <div class="page-location">
+            <h1>
+                <%- page.main %>
+            </h1>
+        </div>
+    </center>
+    <center>
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-text">
+                    <h1>الخوادم الافتراضية</h1>
+                    <h2>خوادم VDS (Virtual Dedicated Server) هي نوع من الخوادم الافتراضية التي توفر مستوى عالٍ من التحكم والمرونة يشبه الخوادم المخصصة، ولكن بتكلفة أقل. تعمل خوادم VDS على تقنية التمثيل الافتراضي، حيث يتم تقسيم خادم فعلي إلى عدة خوادم افتراضية
+                        مستقلة. كل خادم افتراضي لديه نظام تشغيل خاص به وموارد مخصصة (مثل المعالج، الذاكرة، والتخزين) يتم عزلها عن الخوادم الأخرى.</h2>
+                </div>
+                <div class="section-header-icon">
+
+                </div>
+            </div>
+            <br>
+            <div class="section-body vds-servers-section">
+            </div>
+        </div>
+        <script>
+            $.ajax({
+                url: '/get-csrf-token',
+                type: 'GET',
+                success: function(response) {
+                    const csrfToken = response.csrfToken; // Now csrfToken is initialized
+                    $.ajax({
+                        url: '/api/servers',
+                        type: 'GET',
+                        headers: {
+                            'X-CSRF-Token': csrfToken // Add the CSRF token to the headers
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                // Iterate over the products and display them
+                                response.servers.forEach(function(server) {
+                                    const data = JSON.parse(server.data);
+
+                                    $('.basic-servers-section').append(`
+                                    <div class="vps-card ${data.style}">
+                                        <div class="vps-card-header">
+                                            <i class="fa-duotone fa-solid fa-server"></i>
+                                            <h1>${data.title}</h1>
+                                            <h2>${data.subtitle}</h2>
+                                        </div>
+                                        <div class="vps-card-price">
+                                            <h1>Starting at</h1>
+                                            <h2>$${data.price}/mo</h2>
+                                            <h3>SAVE 50% OVER MONTHLY</h3>
+                                        </div>
+                                        <div class="vps-card-info">
+                                            <h1>${data.cpu}</h1>
+                                            <h1>${data.ram}</h1>
+                                            <h1>${data.storage}</h1>
+                                            <h1>${data.traffic}</h1>
+                                            <h1>${data.ddos}</h1>
+                                        </div>
+                                        <br>
+                                        <a  class="vps-card-button" href="/vps?id=${server.id}">اطلب الان</a>
+                                    </div>
+                        `);
+                                });
+                            } else {
+                                $('.basic-servers-section').append('<p>Error loading products.</p>');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            $('.basic-servers-section').append('<p>Error fetching data.</p>');
+                        }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching CSRF token:', error);
+                }
+            });
+        </script>
+    </center>
+    <%- include('../../partial/footer.ejs') %>

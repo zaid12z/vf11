@@ -1,0 +1,271 @@
+<%- include('../partial/header.ejs') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <div class="page-location">
+            <h1>
+                <%- page.main %>
+            </h1>
+        </div>
+    </center>
+    <center>
+        <div class="pmt-success-container" dir="rtl">
+            <div class="pmt-success-icon-wrapper">
+                <i class="fa-solid fa-circle-check pmt-success-pulse"></i>
+            </div>
+
+            <div class="pmt-success-content">
+                <div class="pmt-success-header">
+                    <h1 class="pmt-success-title">تم الدفع بنجاح!</h1>
+                    <p class="pmt-success-subtitle">دفعتك تم تأكيدها بنجاح.</p>
+                </div>
+
+                <div class="pmt-success-amount-box">
+                    <span class="pmt-success-amount-label">المجموع الكلي للدفعة</span>
+                    <div class="pmt-success-amount">
+                        <span class="pmt-success-amount-value"><%= payment.price %></span>
+                        <span class="pmt-success-amount-currency">USD</span>
+                    </div>
+                </div>
+
+                <div class="pmt-success-details">
+                    <div class="pmt-success-detail-item">
+                        <div class="pmt-success-detail-icon">
+                            <i class="fa-solid fa-hashtag"></i>
+                        </div>
+                        <div class="pmt-success-detail-text">
+                            <span class="pmt-success-detail-label">رقم الحوالة</span>
+                            <span class="pmt-success-detail-value"><%= payment.id %></span>
+                        </div>
+                    </div>
+
+                    <div class="pmt-success-detail-item">
+                        <div class="pmt-success-detail-icon">
+                            <i class="fa-solid fa-calendar"></i>
+                        </div>
+                        <div class="pmt-success-detail-text">
+                            <span class="pmt-success-detail-label">تاريخ الحوالة</span>
+                            <span class="pmt-success-detail-value"><%= payment.create_time %></span>
+                        </div>
+                    </div>
+
+                    <div class="pmt-success-detail-item">
+                        <div class="pmt-success-detail-icon">
+                            <i class="fa-solid fa-credit-card"></i>
+                        </div>
+                        <div class="pmt-success-detail-text">
+                            <span class="pmt-success-detail-label">بوابة الدفع</span>
+                            <span class="pmt-success-detail-value"><%= payment.payer.payment_method %></span>
+                        </div>
+                    </div>
+
+                    <div class="pmt-success-detail-item">
+                        <div class="pmt-success-detail-icon">
+                            <i class="fa-solid fa-shopping-cart"></i>
+                        </div>
+                        <div class="pmt-success-detail-text">
+                            <span class="pmt-success-detail-label">السلعة</span>
+                            <span class="pmt-success-detail-value"><%= payment.transactions[0].description %></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+            @keyframes pmt-success-pulse-anim {
+                0% {
+                    transform: scale(1);
+                    opacity: 0.9;
+                }
+                50% {
+                    transform: scale(1.1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 0.9;
+                }
+            }
+            
+            @keyframes pmt-success-slide-up {
+                from {
+                    transform: translateY(20px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+            
+            .pmt-success-container {
+                width: 100%;
+                max-width: 400px;
+                margin: 3rem auto;
+                background: rgb(255, 255, 255);
+                border-radius: 16px;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+                position: relative;
+                overflow: hidden;
+                animation: pmt-success-slide-up 0.6s ease-out;
+                font-family: 'Cairo', sans-serif;
+            }
+            
+            .pmt-success-icon-wrapper {
+                text-align: center;
+                margin: 1.5rem 0;
+                position: relative;
+            }
+            
+            .pmt-success-icon-wrapper i {
+                font-size: 40px;
+                color: #22C55E;
+                background: rgba(34, 197, 94, 0.1);
+                padding: 20px;
+                border-radius: 50%;
+                animation: pmt-success-pulse-anim 2s infinite;
+            }
+            
+            .pmt-success-content {
+                padding: 0 1.5rem 1.5rem;
+            }
+            
+            .pmt-success-header {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .pmt-success-title {
+                color: #1E293B;
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .pmt-success-subtitle {
+                color: #64748B;
+                font-size: 0.95rem;
+                margin: 0;
+                font-weight: 400;
+            }
+            
+            .pmt-success-amount-box {
+                text-align: center;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+                padding: 1.25rem;
+                border-radius: 12px;
+                margin-bottom: 1.5rem;
+            }
+            
+            .pmt-success-amount-label {
+                display: block;
+                color: #64748B;
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+                font-weight: 400;
+            }
+            
+            .pmt-success-amount {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #1E293B;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            
+            .pmt-success-amount-currency {
+                font-size: 1rem;
+                color: #64748B;
+                font-weight: 600;
+            }
+            
+            .pmt-success-details {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .pmt-success-detail-item {
+                background: white;
+                border: 1px solid #E2E8F0;
+                border-radius: 12px;
+                padding: 1rem;
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                transition: all 0.2s ease;
+            }
+            
+            .pmt-success-detail-item:hover {
+                border-color: #CBD5E1;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            }
+            
+            .pmt-success-detail-icon {
+                width: 32px;
+                height: 32px;
+                background: #F1F5F9;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+            
+            .pmt-success-detail-icon i {
+                color: #64748B;
+                font-size: 1rem;
+            }
+            
+            .pmt-success-detail-text {
+                flex: 1;
+            }
+            
+            .pmt-success-detail-label {
+                display: block;
+                color: #64748B;
+                font-size: 0.8rem;
+                margin-bottom: 0.25rem;
+                font-weight: 400;
+            }
+            
+            .pmt-success-detail-value {
+                display: block;
+                color: #1E293B;
+                font-size: 0.9rem;
+                font-weight: 600;
+                line-height: 1.4;
+                word-break: break-word;
+            }
+            
+            @media (max-width: 480px) {
+                .pmt-success-container {
+                    margin: 1.5rem;
+                    max-width: none;
+                }
+                .pmt-success-details {
+                    grid-template-columns: 1fr;
+                }
+                .pmt-success-content {
+                    padding: 0 1rem 1rem;
+                }
+                .pmt-success-amount {
+                    font-size: 1.75rem;
+                }
+                .pmt-success-detail-item {
+                    padding: 0.875rem;
+                }
+            }
+        </style>
+
+    </center>
+    <%- include('../partial/footer.ejs') %>

@@ -1,0 +1,1282 @@
+@import url(https://fonts.googleapis.com/earlyaccess/amiri.css);
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+@import url(https://fonts.googleapis.com/earlyaccess/lateef.css);
+@import url(https://fonts.googleapis.com/earlyaccess/scheherazade.css);
+@import url(https://fonts.googleapis.com/earlyaccess/thabit.css);
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900");
+* {
+    outline: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.eng-font {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji' !important;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(251, 253, 255);
+    font-family: 'Droid Arabic Kufi', serif !important;
+    font-weight: 700 !important;
+}
+
+ ::-webkit-scrollbar {
+    width: 0px;
+}
+
+.header {
+    position: fixed;
+    width: 70%;
+    height: 90px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 20px;
+    margin-top: 20px;
+    display: flex;
+    padding: 0px 30px;
+    justify-content: space-between;
+    margin-top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    box-sizing: unset !important;
+}
+
+.header .logo {
+    position: absolute;
+    left: 30px;
+    width: 120px;
+    height: 100%;
+    display: flex;
+    cursor: pointer;
+}
+
+.header .logo img {
+    height: 70px;
+    margin-top: 10px;
+    padding: 0px 10px;
+    box-sizing: none !important;
+}
+
+.logo a {
+    color: #3b6bff;
+    font-size: 18px;
+    margin-top: 25px;
+    font-family: 'Cairo';
+}
+
+.header .header-intraction {
+    width: auto;
+    height: 100%;
+    display: flex;
+    gap: 30px;
+}
+
+.header .header-intraction .intract {
+    width: auto !important;
+    height: 60% !important;
+    border-radius: 15px;
+    /* border: 2px solid #e5eeff; */
+    display: flex;
+    margin-top: 20px !important;
+    color: #475466 !important;
+    transition: all 0.3s !important;
+    cursor: pointer !important;
+    float: center !important;
+    padding: 0px 10px;
+    gap: 20px !important;
+}
+
+.header .header-intraction .intract h1 {
+    font-size: 15px !important;
+    padding: 0px 5px !important;
+    margin: 10px !important;
+}
+
+.header .header-intraction .intract i {
+    font-size: 18px !important;
+    margin-top: 17px !important;
+    padding: 0px 5px !important;
+    color: #1d55ff;
+}
+
+.header .header-intraction .intract:hover {
+    color: #3b6bff;
+    background: #e5eeff !important;
+}
+
+ :root {
+    --form-control-color: #3b6bff;
+    --form-control-disabled: #959495;
+}
+
+.form-control {
+    font-size: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.form-control+.form-control {
+    margin-top: 1em;
+}
+
+.form-control--disabled {
+    color: var(--form-control-disabled);
+    cursor: not-allowed;
+}
+
+input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    appearance: none;
+    /* For iOS < 15 */
+    background-color: var(--form-background);
+    /* Not removed via appearance */
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.25em;
+    height: 1.25em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+input[type="checkbox"]:disabled {
+    --form-control-color: var(--form-control-disabled);
+    color: var(--form-control-disabled);
+    cursor: not-allowed;
+}
+
+.form-control h1 {
+    font-size: 13px;
+    color: #475466;
+    text-align: right;
+    margin: -5px;
+    padding: 0px;
+}
+
+.form-control a {
+    color: #3b6bff !important;
+    margin: 0px;
+    padding: 0px;
+}
+
+.main-items {
+    gap: 30px;
+}
+
+@media screen and (min-width: 1500px) {
+    .main-items {
+        display: flex !important;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .header-intraction {
+        display: block !important;
+    }
+    .main-items {
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        border-radius: 15px;
+        padding: 10px 15px;
+        margin-top: 100px;
+        display: none;
+        z-index: 10000;
+    }
+    .header .header-intraction .intract {
+        justify-content: space-between;
+    }
+    .menu-show {
+        display: flex !important;
+    }
+}
+
+.notifys {
+    position: fixed;
+    width: auto;
+    height: auto;
+    top: 30px;
+    right: 30px;
+    z-index: 10000;
+}
+
+.notify {
+    width: auto;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    border-radius: 20px;
+    display: flex;
+    margin-top: 10px !important;
+}
+
+.notify {
+    margin: 0px;
+    padding: 0px;
+}
+
+.notify p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.not-right {
+    width: auto;
+    height: auto;
+    padding: 0px 20px;
+}
+
+.not-left {
+    width: 50px;
+    height: auto;
+}
+
+.not-icon {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.664);
+    border-radius: 50%;
+    margin: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.not-icon i {
+    color: lime;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.not-right .title {
+    width: 100%;
+    padding: 10px 0px 0px 0px;
+}
+
+.not-right .body {
+    width: 100%;
+}
+
+.not-right .title p {
+    font-size: 15px;
+    text-align: right;
+}
+
+.not-right .body p {
+    font-size: 13px;
+    text-align: right;
+    color: rgb(83, 83, 83);
+}
+
+.page-location {
+    width: 65%;
+    height: auto;
+}
+
+.page-location h1 {
+    margin: 0px;
+    color: rgb(138, 138, 138);
+    text-align: right;
+    font-size: 15px;
+    font-family: 'Cairo';
+}
+
+.page-location a {
+    margin: 0px;
+    color: #3b6bff;
+    font-size: 12px;
+    font-family: 'Droid Arabic Kufi', serif;
+}
+
+
+/* تنسيق القائمة الفرعية */
+
+.sub-menu {
+    background-color: #f9f9f9;
+    position: absolute;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    right: 180px;
+    /* لجعلها تظهر من الجهة اليمنى */
+    top: 110%;
+    /* لجعلها تظهر أسفل الزر */
+    min-width: 200px;
+    display: none;
+    z-index: 1;
+    border-radius: 8px;
+    padding: 0px 10px 10px 10px;
+    /* لجعل الحواف مستديرة */
+}
+
+.users-sub {
+    right: 510px;
+    /* لجعلها تظهر من الجهة اليمنى */
+    top: 110%;
+}
+
+.more-sub {
+    right: 370px;
+    /* لجعلها تظهر من الجهة اليمنى */
+    top: 110%;
+}
+
+
+/* تنسيق الروابط داخل القائمة الفرعية */
+
+.sub-menu a {
+    position: relative;
+    display: block;
+    padding: 10px 10px !important;
+    color: #8b5757;
+    text-decoration: none;
+    text-align: right;
+    font-size: 13px;
+    /* لمحاذاة النص إلى اليمين */
+}
+
+
+/* تغيير لون الخلفية عند التمرير */
+
+.sub-menu a:hover {
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+@media screen and (max-width: 1500px) {
+    .sub-menu {
+        right: 240px;
+        /* لجعلها تظهر من الجهة اليمنى */
+        top: 220%;
+    }
+    .users-sub {
+        right: 240px;
+        /* لجعلها تظهر من الجهة اليمنى */
+        top: 370%;
+    }
+    .more-sub {
+        right: 240px;
+        /* لجعلها تظهر من الجهة اليمنى */
+        top: 300%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .sub-menu {
+        right: 30px;
+        /* لجعلها تظهر من الجهة اليمنى */
+        top: 290%;
+    }
+    .users-sub {
+        right: 30px;
+        /* لجعلها تظهر من الجهة اليمنى */
+        top: 450%;
+    }
+    .more-sub {
+        right: 30px;
+        /* لجعلها تظهر من الجهة اليمنى */
+        top: 360%;
+    }
+}
+
+.active {
+    color: #3b6bff !important;
+    background: #e5eeff !important;
+}
+
+.account-system {
+    width: 70%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    position: relative;
+    justify-content: right;
+    padding-bottom: 20px;
+}
+
+@media (max-width:1500px) {
+    .account-system {
+        width: 95%;
+    }
+}
+
+.account-rightside {
+    position: relative;
+    width: 250px;
+    height: 100%;
+    transition: all 0.3s;
+    padding-right: 20px;
+    overflow: hidden;
+}
+
+.sideline {
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    background: linear-gradient(180deg, rgba(99, 99, 99, 0.5) 0%, rgba(184, 184, 184, 0.486) 100%);
+    width: 1.5px;
+    height: 95%;
+}
+
+.account-body {
+    width: 100%;
+    height: 100%;
+}
+
+.account-page {
+    position: relative;
+    float: right;
+    width: 180px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #475466;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.account-page h1 {
+    font-size: 13px;
+}
+
+.account-page i {
+    font-size: 15px;
+    margin: 14px;
+    color: #1d55ff;
+}
+
+.account-body-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.account-body-page-title {
+    width: 100%;
+    height: auto;
+    margin: 10px;
+}
+
+.account-body-page-title h1 {
+    font-size: 16px;
+    text-align: right;
+}
+
+.account-body-page-subtitle {
+    width: 100%;
+    height: auto;
+    margin: 10px;
+}
+
+.account-body-page-subtitle h1 {
+    font-size: 12px;
+    text-align: right;
+    color: #475466;
+    font-family: 'Cairo';
+}
+
+@media screen and (max-width: 1200px) {
+    .account-rightside {
+        width: 40px !important;
+    }
+    .account-page {
+        right: -160px !important;
+    }
+}
+
+.account-page:hover {
+    color: #3b6bff;
+    background: #e5eeff !important;
+}
+
+
+/* Modern Dashboard Styles */
+
+:root {
+    --primary-color: #2575fc;
+    --secondary-color: #e5eeff;
+    --accent-color: #6c63ff;
+    --text-color: #475466;
+    --border-radius: 15px;
+    --transition: all 0.3s ease;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --gradient-primary: linear-gradient(135deg, #2575fc, #6c63ff);
+}
+
+.connected-apps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.app {
+    position: relative;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    overflow: hidden;
+}
+
+.app::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.app:hover::before {
+    opacity: 1;
+}
+
+.app-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background: white;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.app:hover .app-icon img {}
+
+.app-info {
+    flex: 1;
+}
+
+.app-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+}
+
+.app-status {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.app-button {
+    margin-left: auto;
+}
+
+.app-button button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.app-button button.disconnect {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.app-button button:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.95);
+}
+
+
+/* Animation for new connections */
+
+@keyframes connectionSuccess {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.connection-success {
+    animation: connectionSuccess 0.5s ease-out forwards;
+}
+
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+    .connected-apps {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    .app {
+        padding: 1.25rem;
+    }
+}
+
+.vps-card-skeleton {
+    width: 240px;
+    height: auto;
+    background-color: #ffffff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 0px 0px 15px 15px;
+    padding: 10px;
+    margin: 20px;
+    overflow: hidden;
+    border-top: 7px solid rgba(228, 228, 228, 0.705);
+}
+
+.vps-card-header-skeleton,
+.vps-card-price-skeleton,
+.vps-card-info-skeleton {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+/* Skeleton Loading Animations */
+
+.skeleton-icon,
+.skeleton-title,
+.skeleton-subtitle,
+.skeleton-price,
+.skeleton-price-info,
+.skeleton-info,
+.skeleton-button {
+    background: #ddd;
+    border-radius: 4px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-icon {
+    width: 50px;
+    height: 50px;
+    margin: 20px 0;
+}
+
+.skeleton-title {
+    width: 60%;
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+.skeleton-subtitle {
+    width: 40%;
+    height: 15px;
+}
+
+.skeleton-price {
+    width: 50%;
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+.skeleton-price-info {
+    width: 70%;
+    height: 15px;
+}
+
+.skeleton-info {
+    width: 80%;
+    height: 15px;
+    margin-bottom: 10px;
+}
+
+
+/* Skeleton Button */
+
+.skeleton-button {
+    width: 90%;
+    height: 30px;
+    margin-top: 10px;
+    background: #ddd;
+    border-radius: 20px;
+}
+
+
+/* Skeleton Pulse Animation */
+
+@keyframes pulse {
+    0% {
+        background-color: #ddd;
+    }
+    50% {
+        background-color: #eee;
+    }
+    100% {
+        background-color: #ddd;
+    }
+}
+
+.section {
+    margin-top: 50px;
+    width: 60%;
+    height: auto;
+}
+
+.section-header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-header h1 {
+    font-size: 20px;
+    color: #475466;
+    text-align: right;
+}
+
+.section-header h2 {
+    font-size: 15px;
+    color: #475466b2;
+    text-align: right;
+    font-family: 'Cairo' !important;
+}
+
+.section-header i {
+    font-size: 30px;
+    color: #475466;
+}
+
+.section-body {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.vps-card {
+    width: 240px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-top: 7px solid black;
+    border-radius: 0px 0px 15px 15px;
+    padding: 10px;
+    margin: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* إضافة تأثير الإضاءة */
+
+.vps-card:hover::after {
+    transform: translate(0, 0);
+}
+
+.vps-card-header {
+    width: 100%;
+    height: auto;
+    color: #000000;
+    position: relative;
+    z-index: 1;
+}
+
+.vps-card-header i {
+    font-size: 40px;
+    margin-top: 30px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+}
+
+.vps-card:hover .vps-card-header i {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.vps-card-header h1 {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+}
+
+
+/* تأثير تحت العنوان */
+
+.vps-card-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.4s ease;
+    opacity: 0.7;
+}
+
+.vps-card:hover .vps-card-header h1::after {
+    width: 100%;
+}
+
+.vps-card-header h2 {
+    font-size: 12px;
+    color: #464646a9;
+}
+
+.vps-card-price {
+    width: 100%;
+    height: auto;
+    font-family: 'Cairo' !important;
+    color: #000000;
+    position: relative;
+}
+
+.vps-card-price h1 {
+    font-size: 14px;
+    margin: 0px;
+}
+
+.vps-card-price h2 {
+    font-size: 22px;
+    margin: 0px !important;
+    transition: transform 0.3s ease;
+}
+
+.vps-card-price h3 {
+    width: 90%;
+    font-size: 12px;
+    background-color: #00000073;
+    border-radius: 15px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.vps-card-info {
+    width: 100%;
+    height: auto;
+    font-family: 'Cairo' !important;
+}
+
+.vps-card-info h1 {
+    font-size: 14px;
+    color: #000000;
+    margin: 0px;
+    padding: 3px 0;
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+.vps-card-button {
+    width: 90%;
+    height: auto;
+    padding: 5px 30px;
+    background-color: #00000073;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #000000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    outline: none;
+}
+
+
+/* تأثير الزر المتقدم */
+
+.vps-card-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.vps-card-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.vps-card-button:active {
+    transform: scale(0.95);
+}
+
+
+/* VPS1 Styles */
+
+.vps1 {
+    border-color: rgb(137, 255, 143) !important;
+}
+
+.vps1 .vps-card-header {
+    color: rgb(137, 255, 143) !important;
+}
+
+.vps1 .vps-card-price {
+    color: rgb(137, 255, 143) !important;
+}
+
+.vps1 .vps-card-price h3 {
+    background-color: rgb(234, 255, 235) !important;
+}
+
+.vps1 .vps-card-button {
+    background-color: rgb(234, 255, 235) !important;
+    color: rgb(137, 255, 143) !important;
+}
+
+
+/* VPS2 Styles */
+
+.vps2 {
+    border-color: rgb(132, 66, 255) !important;
+}
+
+.vps2 .vps-card-header {
+    color: rgb(132, 66, 255) !important;
+}
+
+.vps2 .vps-card-price {
+    color: rgb(132, 66, 255) !important;
+}
+
+.vps2 .vps-card-price h3 {
+    background-color: rgb(204, 177, 255) !important;
+}
+
+.vps2 .vps-card-button {
+    background-color: rgb(204, 177, 255) !important;
+    color: rgb(132, 66, 255) !important;
+}
+
+
+/* VPS3 Styles */
+
+.vps3 .vps-card-header,
+.vps3 .vps-card-price,
+.vps3 {
+    color: rgb(255, 77, 101) !important;
+    border-color: rgb(255, 77, 101) !important;
+}
+
+.vps3 .vps-card-price h3 {
+    background-color: rgb(255, 195, 203) !important;
+}
+
+.vps3 .vps-card-button {
+    background-color: rgb(255, 195, 203) !important;
+    color: rgb(255, 77, 101) !important;
+}
+
+
+/* VPS4 Styles */
+
+.vps4 .vps-card-header,
+.vps4 .vps-card-price,
+.vps4 {
+    color: rgb(166, 255, 0) !important;
+    border-color: rgb(166, 255, 0) !important;
+}
+
+.vps4 .vps-card-price h3 {
+    background-color: rgb(233, 255, 193) !important;
+}
+
+.vps4 .vps-card-button {
+    background-color: rgb(233, 255, 193) !important;
+    color: rgb(166, 255, 0) !important;
+}
+
+
+/* VPS5 Styles */
+
+.vps5 .vps-card-header,
+.vps5 .vps-card-price,
+.vps5 {
+    color: rgb(90, 129, 255) !important;
+    border-color: rgb(90, 129, 255) !important;
+}
+
+.vps5 .vps-card-price h3 {
+    background-color: rgb(174, 193, 255) !important;
+}
+
+.vps5 .vps-card-button {
+    background-color: rgb(174, 193, 255) !important;
+    color: rgb(90, 129, 255) !important;
+}
+
+
+/* VPS6 Styles */
+
+.vps6 .vps-card-header,
+.vps6 .vps-card-price,
+.vps6 {
+    color: rgb(195, 90, 255) !important;
+    border-color: rgb(195, 90, 255) !important;
+}
+
+.vps6 .vps-card-price h3 {
+    background-color: rgb(228, 181, 255) !important;
+}
+
+.vps6 .vps-card-button {
+    background-color: rgb(228, 181, 255) !important;
+    color: rgb(195, 90, 255) !important;
+}
+
+
+/* VPS7 Styles */
+
+.vps7 .vps-card-header,
+.vps7 .vps-card-price,
+.vps7 {
+    color: rgb(0, 255, 200) !important;
+    border-color: rgb(0, 255, 200) !important;
+}
+
+.vps7 .vps-card-price h3 {
+    background-color: rgb(193, 255, 242) !important;
+}
+
+.vps7 .vps-card-button {
+    background-color: rgb(193, 255, 242) !important;
+    color: rgb(0, 255, 200) !important;
+}
+
+
+/* تحسين التأثيرات للأجهزة التي تدعم hover */
+
+@media (hover: hover) {
+    .vps-card {
+        will-change: transform;
+    }
+}
+
+
+/* تحسين الأداء على الأجهزة المحمولة */
+
+@media (max-width: 768px) {
+    .vps-card:hover {
+        transform: translateY(-4px) scale(1.005);
+    }
+}
+
+.login-form {
+    margin-top: 100px;
+    width: 380px;
+    height: auto;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 20px;
+    padding: 0px 30px;
+}
+
+.login-form-header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-form-header h1 {
+    font-size: 20px;
+    color: #475466;
+    text-align: right;
+}
+
+.login-form-header h2 {
+    font-size: 13px;
+    color: #475466;
+    text-align: right;
+}
+
+.login-form-header a {
+    color: #3b6bff;
+}
+
+.login-form-header i {
+    font-size: 30px;
+    color: #475466;
+    text-align: right;
+    margin: 20px;
+}
+
+.login-inputs {
+    width: 100%;
+    height: auto;
+}
+
+.login-inputs input {
+    width: 90%;
+    height: 30px;
+    padding: 5px;
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    color: #475466;
+    border-right: 1px solid #475466;
+}
+
+ ::placeholder {
+    font-weight: 700;
+    font-family: 'Cairo';
+}
+
+.login-buttons {
+    width: 100%;
+    height: auto;
+}
+
+.login-button {
+    width: 90%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    color: #475466;
+    transition: all 0.3s;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: rgb(232, 233, 236);
+}
+
+.login-button h1 {
+    font-size: 13px;
+    margin: 0px;
+}
+
+.login-button i {
+    font-size: 17px;
+    margin: 5px;
+}
+
+.login-button:hover {
+    color: #3b6bff;
+    background: #e5eeff;
+}
+
+.otherheader {
+    color: #475466;
+    font-size: 15px;
+}
+
+.login-form-options {
+    width: 90%;
+    height: auto;
+}
+
+.login-form-options a {
+    color: #3b6bff;
+    font-size: 12px;
+    float: right;
+}
+
+@media screen and (max-width: 800px) {
+    .section {
+        width: 100%;
+    }
+    .vps-card {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .section {
+        width: 90%;
+    }
+    .vps-card {
+        width: 80%;
+    }
+}
+
+.dataview-holder {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.dataview-header {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.dataview-header-icon:hover {
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+}
+
+#users-button {
+    border-radius: 10px 2px 2px 10px !important;
+    border-right: 2px solid #3b6bff;
+}

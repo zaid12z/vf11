@@ -1,0 +1,832 @@
+<%- include('../partial/header.ejs') %>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <center>
+        <div class="page-location">
+            <h1>
+                <%- page.main %>
+            </h1>
+        </div>
+    </center>
+    <div class="hidden plan" data-plan="<%- req.query.plan %>"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">إتمام عملية الشراء</h1>
+        </div>
+
+        <div class="payment-container">
+            <!-- Left Side: Plan Details and Summary -->
+            <div class="payment-details">
+                <!-- Plan Details Card -->
+                <div class="card plan-details">
+                    <div class="card-header">
+                        <i class="fa-solid fa-cube card-header-icon"></i>
+                        <h2>تفاصيل شراء الخطة</h2>
+                    </div>
+                    <div class="plan-info">
+                        <div class="plan-icon">
+                            <i class="fa-duotone fa-solid fa-server"></i>
+                        </div>
+                        <div class="plan-content">
+                            <div class="plan-name"></div>
+                            <div class="plan-features">
+                                <div class="feature">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span>دعم فني على مدار الساعة</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span>نسخ احتياطي يومي</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span>حماية متقدمة ضد الهجمات</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="plan-price-container">
+                            <div class="plan-price eng-font"></div>
+                            <div class="price-period">شهرياً</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="card order-summary">
+                    <div class="card-header">
+                        <i class="fa-solid fa-receipt card-header-icon"></i>
+                        <h2>ملخص الطلب</h2>
+                    </div>
+                    <div class="summary-content">
+                        <div class="summary-item">
+                            <div class="summary-label">
+                                <span>سعر الخطة</span>
+                                <span class="summary-label-period">شهرياً</span>
+                            </div>
+                            <span class="base-price eng-font"></span>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">
+                                <span>ضريبة القيمة المضافة</span>
+                                <span class="tax-label eng-font">15%</span>
+                            </div>
+                            <span class="tax-amount eng-font"></span>
+                        </div>
+                        <div class="summary-divider"></div>
+                        <div class="summary-item total">
+                            <div class="summary-label">
+                                <span>الإجمالي</span>
+                                <span class="total-label">شامل الضريبة</span>
+                            </div>
+                            <span class="total-amount eng-font"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Payment Methods -->
+            <div class="payment-methods-container">
+                <div class="card payment-methods">
+                    <div class="card-header">
+                        <i class="fa-solid fa-credit-card card-header-icon"></i>
+                        <h2>طرق الدفع المتوفرة</h2>
+                    </div>
+
+                    <!-- Payment Options -->
+                    <div class="payment-options">
+                        <label class="payment-option">
+            <input type="radio" name="payment-method" value="paypal" checked hidden/>
+            <div class="payment-option-content">
+              <img
+                src="https://img.icons8.com/color/48/000000/paypal.png"
+                alt="PayPal"
+              />
+              <div class="payment-option-info">
+                <span class="payment-option-name eng-font">PayPal</span>
+                <span class="payment-option-desc">الدفع الآمن عبر <span class="eng-font">PayPal</span></span>
+              </div>
+              <i class="fa-solid fa-check payment-option-check"></i>
+            </div>
+          </label>
+                    </div>
+
+                    <!-- Billing Information -->
+                    <div class="billing-info">
+                        <h3><i class="fa-solid fa-user-circle"></i> معلومات الفوترة</h3>
+                        <div class="form-group">
+                            <div class="feature">
+                                <i class="fa-solid fa-check"></i>
+                                <span>يتم ارسالها عبر الايميل</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms Agreement -->
+                    <div class="terms-agreement">
+                        <label class="checkbox-container">
+            <input type="checkbox" class="policecheck" name="terms" hidden/>
+            <span class="checkmark">
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <span class="terms-text">اوافق على <a href="" class="">سياسات الموقع</a></span>
+          </label>
+                    </div>
+
+                    <!-- Pay Button -->
+                    <button type="button" class="pay-button paybutton">
+          <div class="button-content">
+            <i class="fa-solid fa-lock button-icon"></i>
+            <span class="button-text "></span>
+            <div class="loading-spinner"></div>
+          </div>
+        </button>
+
+                    <!-- Security Notice -->
+                    <div class="security-notice">
+                        <div class="security-badge">
+                            <i class="fa-solid fa-shield-check"></i>
+                            <span>معاملات آمنة ومشفرة</span>
+                        </div>
+                        <div class="security-badge">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>تفعيل فوري</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Base Styles */
+        
+         :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --primary-light: #eef2ff;
+            --primary-dark: #3730a3;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --text-lighter: #9ca3af;
+            --border-color: #e5e7eb;
+            --border-hover: #d1d5db;
+            --background-color: #f9fafb;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        body {
+            font-family: "Cairo", sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        /* Hero Section */
+        
+        .hero-section {
+            margin-bottom: 2rem;
+            text-align: right;
+        }
+        
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin: 1rem 0;
+        }
+        /* Breadcrumb */
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .breadcrumb-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .breadcrumb-link:hover {
+            color: var(--primary-hover);
+        }
+        
+        .breadcrumb-separator {
+            color: var(--text-lighter);
+        }
+        
+        .breadcrumb-current {
+            color: var(--text-light);
+        }
+        /* Payment Container */
+        
+        .payment-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+        }
+        /* Cards */
+        
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .card-header-icon {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            background: var(--primary-light);
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+        }
+        
+        .card-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0;
+        }
+        /* Plan Info */
+        
+        .plan-info {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: linear-gradient(to left, var(--primary-light), white);
+            border-radius: 0.75rem;
+            gap: 1.5rem;
+        }
+        
+        .plan-icon i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            background: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .plan-content {
+            flex: 1;
+        }
+        
+        .plan-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .plan-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        .feature i {
+            color: var(--success-color);
+        }
+        
+        .plan-price-container {
+            text-align: left;
+        }
+        
+        .plan-price {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .price-period {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        /* Order Summary */
+        
+        .summary-content {
+            padding: 1rem 0;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .summary-label-period,
+        .tax-label,
+        .total-label {
+            font-size: 0.75rem;
+            color: var(--text-lighter);
+        }
+        
+        .summary-divider {
+            height: 1px;
+            background: linear-gradient(to left, var(--border-color), transparent);
+            margin: 1rem 0;
+        }
+        
+        .summary-item.total {
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--primary-color);
+        }
+        /* Payment Methods */
+        
+        .payment-options {
+            margin: 1.5rem 0;
+        }
+        
+        .payment-option {
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        .payment-option-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.75rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .payment-option input:checked+.payment-option-content {
+            border-color: var(--primary-color);
+            background: var(--primary-light);
+        }
+        
+        .payment-option-info {
+            flex: 1;
+        }
+        
+        .payment-option-name {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .payment-option-desc {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        .payment-option-check {
+            color: var(--primary-color);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .payment-option input:checked+.payment-option-content .payment-option-check {
+            opacity: 1;
+        }
+        /* Billing Information */
+        
+        .billing-info {
+            margin: 2rem 0;
+        }
+        
+        .billing-info h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.125rem;
+            margin-bottom: 1.25rem;
+        }
+        
+        .billing-info h3 i {
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .input-group {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-lighter);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            padding-right: 2.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        /* Terms Agreement */
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+            cursor: pointer;
+        }
+        
+        .checkmark {
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .checkmark i {
+            color: white;
+            font-size: 0.75rem;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.2s;
+        }
+        
+        .policecheck:checked+.checkmark {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .policecheck:checked+.checkmark i {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .terms-text {
+            font-size: 0.875rem;
+        }
+        
+        .terms-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .terms-link:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+        /* Pay Button */
+        
+        .pay-button {
+            width: 100%;
+            background: linear-gradient( to left, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pay-button:hover {
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+        
+        .pay-button:active {
+            transform: translateY(0);
+        }
+        
+        .button-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        
+        .button-icon {
+            font-size: 0.875rem;
+        }
+        /* Loading Spinner */
+        
+        .loading-spinner {
+            display: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .pay-button.loading {
+            background: var(--primary-dark);
+        }
+        
+        .pay-button.loading .button-text {
+            opacity: 0.7;
+        }
+        
+        .pay-button.loading .loading-spinner {
+            display: block;
+        }
+        /* Security Notice */
+        
+        .security-notice {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+        
+        .security-badge i {
+            color: var(--success-color);
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 1024px) {
+            .payment-container {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 1.75rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem;
+            }
+            .card {
+                padding: 1rem;
+            }
+            .plan-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            .plan-icon {
+                margin: 0 auto;
+            }
+            .plan-price-container {
+                text-align: center;
+                margin-top: 1rem;
+            }
+            .security-notice {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        /* Animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .card {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .feature {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        
+        .feature:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .feature:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .feature:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+    </style>
+
+    <script>
+        // Get CSRF token and fetch server data
+        const fetchServerData = async() => {
+            try {
+                const tokenResponse = await fetch("/get-csrf-token");
+                const {
+                    csrfToken
+                } = await tokenResponse.json();
+
+                const serverResponse = await fetch("/api/allservers", {
+                    headers: {
+                        "X-CSRF-Token": csrfToken,
+                    },
+                });
+
+                const data = await serverResponse.json();
+
+                if (data.success) {
+                    const planId = document.querySelector(".plan").dataset.plan;
+                    const server = data.servers.find((s) => s.id == planId);
+
+                    if (server) {
+                        // Update plan details
+                        document.querySelector(
+                            ".plan-icon i"
+                        ).className = `fa-duotone fa-solid fa-server ${server.style}`;
+                        document.querySelector(".plan-name").textContent = server.title;
+                        document.querySelector(
+                            ".plan-price"
+                        ).textContent = `$${server.price}`;
+
+                        $('.button-text').html(`<span class="eng-font">$${server.price}</span>`)
+
+                        // Calculate and update summary
+                        let basePrice = parseFloat(server.price);
+                        const taxRate = 0.15;
+                        const taxAmount = basePrice * taxRate;
+                        basePrice = basePrice - taxAmount
+                        const totalAmount = basePrice + taxAmount;
+
+                        document.querySelector(
+                            ".base-price"
+                        ).textContent = `$${basePrice.toFixed(2)}`;
+                        document.querySelector(
+                            ".tax-amount"
+                        ).textContent = `$${taxAmount.toFixed(2)}`;
+                        document.querySelector(
+                            ".total-amount"
+                        ).textContent = `$${totalAmount.toFixed(2)}`;
+                    }
+                } else {
+                    showError("فشل في تحميل بيانات الخطة");
+                }
+            } catch (error) {
+                showError("حدث خطأ في الاتصال");
+            }
+        };
+
+        // Handle payment
+        $(document).on("click", ".paybutton", async() => {
+            const checkbox = document.querySelector(".policecheck");
+            const payButton = document.querySelector(".paybutton");
+
+            // Validation
+            if (!checkbox.checked) {
+                return showError("يجب عليك الموافقة على سياسات الموقع");
+            }
+
+            // Show loading state
+            payButton.classList.add("loading");
+            payButton.disabled = true;
+
+            try {
+                const tokenResponse = await fetch("/get-csrf-token");
+                const {
+                    csrfToken
+                } = await tokenResponse.json();
+
+                const planId = document.querySelector(".plan").dataset.plan;
+                const response = await fetch("/api/checkout", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-Token": csrfToken,
+                    },
+                    body: JSON.stringify({
+                        plan: planId,
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    window.location.href = data.message;
+                } else {
+                    showError("فشل في إتمام عملية الدفع");
+                }
+            } catch (error) {
+                console.log(error)
+                showError("حدث خطأ في الاتصال");
+            } finally {
+                payButton.classList.remove("loading");
+                payButton.disabled = false;
+            }
+        })
+
+        // Helper functions
+        const showError = (message) => {
+            Web.Notify("error", "خطأ", message, 4000);
+        };
+
+        const isValidEmail = (email) => {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchServerData();
+        });
+    </script>
+
+    <%- include('../partial/footer.ejs') %>

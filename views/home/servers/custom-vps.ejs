@@ -1,0 +1,185 @@
+<%- include('../../partial/header.ejs') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <div class="page-location">
+            <h1>
+                <%- page.main %>
+            </h1>
+        </div>
+    </center>
+    <center>
+        <!DOCTYPE html>
+        <html lang="ar" dir="rtl">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>إعداد الخادم الافتراضي</title>
+            <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </head>
+
+        <body class="bg-gray-50">
+            <div class="min-h-screen container mx-auto px-4 py-8">
+                <div class="max-w-6xl mx-auto">
+                    <!-- Header -->
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl font-bold text-gray-900 mb-4">إنشاء خادمك الخاص</h1>
+                        <p class="text-lg text-gray-600">يمكنك الآن إنشاء خادمك الخاص الذي يناسب مع إحتياجاتك ومتطلباتك الخاصة</p>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <!-- Main Configuration Card -->
+                        <div class="flex-grow bg-white rounded-xl shadow-lg p-8">
+                            <!-- RAM Configuration -->
+                            <div class="mb-8">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div>
+                                        <h2 class="text-xl font-semibold text-gray-900">الذاكرة العشوائية</h2>
+                                        <p class="text-sm text-gray-500">اختر حجم الذاكرة المناسب</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span id="ramValue" class="text-2xl font-bold text-blue-600 eng-font">2</span>
+                                        <span class="text-gray-600">جيجابايت</span>
+                                    </div>
+                                </div>
+                                <input type="range" id="ram" min="2" max="64" value="2" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" oninput="updateConfig()">
+                                <div class="flex justify-between text-sm text-gray-600 mt-2">
+                                    <span class="eng-font">2</span>
+                                    <span class="eng-font">64</span>
+                                </div>
+                            </div>
+
+                            <!-- vCores Configuration -->
+                            <div class="mb-8">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div>
+                                        <h2 class="text-xl font-semibold text-gray-900">المعالج الافتراضي</h2>
+                                        <p class="text-sm text-gray-500">حدد عدد النوى المطلوبة</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span id="coresValue" class="text-2xl font-bold text-blue-600 eng-font">2</span>
+                                        <span class="text-gray-600">نواة</span>
+                                    </div>
+                                </div>
+                                <input type="range" id="cores" min="2" max="16" value="2" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" oninput="updateConfig()">
+                                <div class="flex justify-between text-sm text-gray-600 mt-2">
+                                    <span class="eng-font">2</span>
+                                    <span class="eng-font">16</span>
+                                </div>
+                            </div>
+
+                            <!-- Storage Configuration -->
+                            <div class="mb-8">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div>
+                                        <h2 class="text-xl font-semibold text-gray-900">مساحة التخزين</h2>
+                                        <p class="text-sm text-gray-500">اختر سعة التخزين المطلوبة</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span id="storageValue" class="text-2xl font-bold text-blue-600 eng-font">50</span>
+                                        <span class="text-gray-600">جيجابايت</span>
+                                    </div>
+                                </div>
+                                <input type="range" id="storage" min="50" max="200" value="50" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" oninput="updateConfig()">
+                                <div class="flex justify-between text-sm text-gray-600 mt-2">
+                                    <span class="eng-font">50</span>
+                                    <span class="eng-font">200</span>
+                                </div>
+                            </div>
+
+                            <!-- Price Summary -->
+                            <div class="bg-gray-50 rounded-lg p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-xl font-semibold text-gray-900">السعر الشهري</h3>
+                                    <div class="text-right">
+                                        <span id="totalPrice" class="text-3xl font-bold text-green-600 eng-font">$3.60</span>
+                                        <span class="text-gray-600">/شهرياً</span>
+                                    </div>
+                                </div>
+                                <button class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors" onclick="alert('سيتم معالجة الطلب هنا!')">
+                                    إنشاء الخادم
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Resource Distribution Chart (Smaller, on right) -->
+                        <div class="md:w-1/3 bg-white rounded-xl shadow-lg p-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">توزيع الموارد</h3>
+                            <div class="aspect-square">
+                                <canvas id="resourceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Initialize chart
+                const ctx = document.getElementById('resourceChart').getContext('2d');
+                const resourceChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['الذاكرة', 'المعالج', 'التخزين'],
+                        datasets: [{
+                            data: [2, 2, 50],
+                            backgroundColor: [
+                                'rgba(59, 130, 246, 0.8)',
+                                'rgba(16, 185, 129, 0.8)',
+                                'rgba(249, 115, 22, 0.8)'
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                rtl: true,
+                                labels: {
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                function updateConfig() {
+                    // Get current values
+                    const ram = document.getElementById('ram').value;
+                    const cores = document.getElementById('cores').value;
+                    const storage = document.getElementById('storage').value;
+
+                    // Update display values
+                    document.getElementById('ramValue').textContent = ram;
+                    document.getElementById('coresValue').textContent = cores;
+                    document.getElementById('storageValue').textContent = storage;
+
+                    // Calculate price
+                    const ramPrice = ram * 1.2; // $5 per GB
+                    const coresPrice = cores * 0.1; // $10 per core
+                    const storagePrice = storage * 0.02; // $0.20 per GB
+                    const total = ramPrice + coresPrice + storagePrice;
+
+                    // Update price display
+                    document.getElementById('totalPrice').textContent = '$' + total.toFixed(2);
+
+                    // Update chart
+                    resourceChart.data.datasets[0].data = [ram, cores, storage];
+                    resourceChart.update();
+                }
+            </script>
+        </body>
+
+        </html>
+    </center>
+    <%- include('../../partial/footer.ejs') %>

@@ -1,0 +1,459 @@
+<%- include('../../partial/header.ejs') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <div class="page-location">
+            <h1>
+                <%- page.main %>
+            </h1>
+        </div>
+    </center>
+    <br>
+    <div class="terrificbrick-vps-wrapper">
+        <div class="terrificbrick-vps-topnav">
+            <a href="#" class="terrificbrick-vps-nav-item active">الرئيسية</a>
+            <a href="#" class="terrificbrick-vps-nav-item">الإعدادات</a>
+        </div>
+
+        <div class="terrificbrick-vps-controls">
+            <div class="terrificbrick-vps-status eng-font">RUNNING</div>
+
+        </div>
+
+        <div class="terrificbrick-vps-main">
+            <div class="terrificbrick-vps-main-right">
+                <div class="terrificbrick-vps-server">
+
+                    <div class="terrificbrick-vps-server-header">
+                        <h1 class="terrificbrick-vps-server-title">الإجرائات</h1>
+                        <div class="terrificbrick-vps-server-actions">
+                            <button class="terrificbrick-vps-icon-btn"><i class="fas fa-cog"></i></button>
+                        </div>
+                    </div>
+                    <button class="terrificbrick-vps-btn">تمهيد</button>
+                    <button class="terrificbrick-vps-btn">اعادة</button>
+                    <button class="terrificbrick-vps-btn">إيقاف</button>
+                    <button class="terrificbrick-vps-btn">تشغيل</button>
+                    <button class="terrificbrick-vps-btn">تعين كلمة مرور</button>
+
+                </div>
+                <div class="terrificbrick-vps-server">
+                    <div class="terrificbrick-vps-meta">
+                        <div class="terrificbrick-vps-os">
+                            <div class="terrificbrick-vps-os-info">
+                                <div class="terrificbrick-vps-os-name eng-font">Windows Server 2022 Standard</div>
+                                <div class="terrificbrick-vps-os-version eng-font">20348</div>
+                            </div>
+                            <img src="../../home/img/windows_logo.png" alt="Windows" class="terrificbrick-vps-os-icon">
+                        </div>
+                    </div>
+                </div>
+                <div class="terrificbrick-vps-server">
+                    <div class="terrificbrick-vps-meta">
+                        <div class="terrificbrick-vps-meta-row">
+                            <span>نظام الإدخال</span>
+                            <span>محمل</span>
+                        </div>
+                        <div class="terrificbrick-vps-meta-row">
+                            <span>تاريخ الإنشاء</span>
+                            <span class="eng-font">FEB 6, 2025 11:39 AM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="terrificbrick-vps-stats">
+                    <div class="terrificbrick-vps-stat-card">
+                        <div class="terrificbrick-vps-stat-header">
+                            <div class="terrificbrick-vps-stat-title">المعالج</div>
+                            <div class="terrificbrick-vps-stat-value eng-font">8.9%</div>
+                        </div>
+                        <div class="terrificbrick-vps-progress">
+                            <div class="terrificbrick-vps-progress-bar" style="width: 8.9%"></div>
+                        </div>
+                        <div class="terrificbrick-vps-stat-footer eng-font">
+                            <%- server.data.settings.resources.cpuCores %> Cores</div>
+                    </div>
+
+                    <div class="terrificbrick-vps-stat-card">
+                        <div class="terrificbrick-vps-stat-header">
+                            <div class="terrificbrick-vps-stat-title">الذاكرة</div>
+                            <div class="terrificbrick-vps-stat-value eng-font">54.7%</div>
+                        </div>
+                        <div class="terrificbrick-vps-progress">
+                            <div class="terrificbrick-vps-progress-bar" style="width: 54.7%"></div>
+                        </div>
+                        <div class="terrificbrick-vps-stat-footer eng-font">
+                            <%- server.data.settings.resources.memory %> GB
+                                <br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="terrificbrick-vps-network">
+                    <div class="terrificbrick-vps-network-header">
+                        <div class="terrificbrick-vps-network-title">الشبكة</div>
+                        <div class="terrificbrick-vps-network-ip">
+                            <%- server.data.vnc.ip %>
+                        </div>
+                    </div>
+
+                    <div class="terrificbrick-vps-network-content">
+                        <div class="terrificbrick-vps-traffic">
+                            <div class="terrificbrick-vps-traffic-row">
+                                <span class="terrificbrick-vps-traffic-speed">∞</span>
+                                <span class="terrificbrick-vps-traffic-value eng-font">2.07 GB</span>
+                                <span class="terrificbrick-vps-traffic-label eng-font">Inbound</span>
+                            </div>
+                            <div class="terrificbrick-vps-traffic-row">
+                                <span class="terrificbrick-vps-traffic-speed">∞</span>
+                                <span class="terrificbrick-vps-traffic-value eng-font">871.6 MB</span>
+                                <span class="terrificbrick-vps-traffic-label eng-font">Outbound</span>
+                            </div>
+                            <div class="terrificbrick-vps-traffic-row">
+                                <span class="terrificbrick-vps-traffic-speed">∞</span>
+                                <span class="terrificbrick-vps-traffic-value eng-font">2.92 GB</span>
+                                <span class="terrificbrick-vps-traffic-label eng-font">Total bound</span>
+                            </div>
+                        </div>
+
+                        <div class="terrificbrick-vps-chart">
+                            <canvas id="networkChart"></canvas>
+                            <div class="terrificbrick-vps-chart-label eng-font">29/71%</div>
+                        </div>
+                    </div>
+
+                    <div class="terrificbrick-vps-network-footer eng-font">
+                        <%- server.data.created %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        /* VPS Panel Unique Styles */
+        
+        .terrificbrick-vps-wrapper {
+            position: relative;
+            width: 80%;
+            padding: 1.5rem;
+            background: #f8fafc;
+            min-height: 100vh;
+            right: 50%;
+            transform: translateX(50%);
+        }
+        
+        .terrificbrick-vps-topnav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .terrificbrick-vps-nav-item {
+            padding: 0.75rem 1.5rem;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+        
+        .terrificbrick-vps-nav-item.active {
+            background: #47b5ff;
+            color: white;
+            border-radius: 6px;
+        }
+        
+        .terrificbrick-vps-status {
+            margin-left: auto;
+            padding: 0.5rem 1rem;
+            background: #dcfce7;
+            color: #16a34a;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .terrificbrick-vps-controls {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        
+        .terrificbrick-vps-btn {
+            padding: 7px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s all;
+            border: 2px solid #e2e8f0;
+            color: #64748b;
+            font-family: 'Droid Arabic Kufi', serif !important;
+            font-weight: 700 !important;
+            margin-bottom: 10px;
+        }
+        
+        .terrificbrick-vps-btn:hover {
+            color: #47b5ff;
+        }
+        
+        .terrificbrick-vps-btn.rebuild {
+            background: #dc2626;
+        }
+        
+        .terrificbrick-vps-main {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2rem;
+        }
+        
+        .terrificbrick-vps-server {
+            background: white;
+            border-radius: 8px;
+            padding: 0px 15px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            margin-bottom: 10px;
+        }
+        
+        .terrificbrick-vps-server-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .terrificbrick-vps-server-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .terrificbrick-vps-server-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .terrificbrick-vps-icon-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .terrificbrick-vps-icon-btn:hover {
+            background: #f1f5f9;
+            color: #47b5ff;
+        }
+        
+        .terrificbrick-vps-os {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .terrificbrick-vps-os-icon {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .terrificbrick-vps-os-info {
+            flex: 1;
+        }
+        
+        .terrificbrick-vps-os-name {
+            font-weight: 500;
+            color: #1e293b;
+            text-align: left;
+        }
+        
+        .terrificbrick-vps-os-version {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        .terrificbrick-vps-meta {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1rem;
+        }
+        
+        .terrificbrick-vps-meta-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            color: #64748b;
+        }
+        
+        .terrificbrick-vps-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .terrificbrick-vps-stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+        
+        .terrificbrick-vps-stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .terrificbrick-vps-stat-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1e293b;
+        }
+        
+        .terrificbrick-vps-stat-value {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .terrificbrick-vps-progress {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+        
+        .terrificbrick-vps-progress-bar {
+            height: 100%;
+            background: #47b5ff;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        .terrificbrick-vps-stat-footer {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        .terrificbrick-vps-network {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+        
+        .terrificbrick-vps-network-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .terrificbrick-vps-network-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1e293b;
+        }
+        
+        .terrificbrick-vps-network-ip {
+            font-family: monospace;
+            color: #64748b;
+        }
+        
+        .terrificbrick-vps-network-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+        }
+        
+        .terrificbrick-vps-traffic {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .terrificbrick-vps-traffic-row {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e1eeff;
+        }
+        
+        .terrificbrick-vps-traffic-label {
+            color: #64748b;
+        }
+        
+        .terrificbrick-vps-traffic-value {
+            font-weight: 500;
+            color: #1e293b;
+        }
+        
+        .terrificbrick-vps-traffic-speed {
+            color: #64748b;
+            font-family: monospace;
+        }
+        
+        .terrificbrick-vps-chart {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+        
+        .terrificbrick-vps-chart-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .terrificbrick-vps-network-footer {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-top: 1.5rem;
+        }
+        
+        @media (max-width: 1200px) {
+            .terrificbrick-vps-main {
+                grid-template-columns: 1fr;
+            }
+            .terrificbrick-vps-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .terrificbrick-vps-controls {
+                flex-wrap: wrap;
+            }
+            .terrificbrick-vps-btn {
+                flex: 1 1 calc(50% - 0.5rem);
+            }
+            .terrificbrick-vps-network-content {
+                grid-template-columns: 1fr;
+            }
+            .terrificbrick-vps-chart {
+                margin: 0 auto;
+            }
+        }
+    </style>
+    <%- include('../../partial/footer.ejs') %>
+
+        <script>
+        </script>

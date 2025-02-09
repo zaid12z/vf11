@@ -1,0 +1,83 @@
+<%- include('../../partial/header.ejs') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <div class="page-location">
+            <h1>
+                <%- page.main %>
+            </h1>
+        </div>
+    </center>
+    <center>
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-text">
+                    <h1>الخوادم الاحترافية</h1>
+                    <h2>تُعد الخوادم الاحترافية (Dedicated Servers) خيارًا مثاليًا للأعمال التي تتطلب أداءً عاليًا وموارد مخصصة بالكامل. توفر هذه الخوادم تحكمًا كاملاً في البيئة الافتراضية، مما يسمح بتخصيص النظام وتكوين الموارد حسب احتياجات الأعمال. تتميز
+                        الخوادم الاحترافية بقدرتها على التعامل مع الأحمال الثقيلة، مثل استضافة مواقع الويب الكبيرة، التطبيقات المعقدة، أو قواعد البيانات الضخمة. بفضل العزل التام للموارد، توفر الخوادم الاحترافية أداءً عاليًا واستقرارًا ممتازًا، مما يجعلها
+                        الخيار الأمثل للشركات التي تتطلب أعلى مستويات الأمان والموثوقية.</h2>
+
+                </div>
+                <div class="section-header-icon">
+
+                </div>
+            </div>
+            <br>
+            <div class="section-body basic-servers-section">
+            </div>
+        </div>
+        <script>
+            GetPlan("pro", (response) => {
+                response.servers.forEach(function(server) {
+
+                    $('.basic-servers-section').append(`
+                        <div class="vps-card-skeleton">
+                            <div class="vps-card-header-skeleton">
+                                <div class="skeleton-icon"></div>
+                                <div class="skeleton-title"></div>
+                                <div class="skeleton-subtitle"></div>
+                            </div>
+                            <div class="vps-card-price-skeleton">
+                                <div class="skeleton-price"></div>
+                                <div class="skeleton-price-info"></div>
+                            </div>
+                            <div class="vps-card-info-skeleton">
+                                <div class="skeleton-info"></div>
+                                <div class="skeleton-info"></div>
+                                <div class="skeleton-info"></div>
+                                <div class="skeleton-info"></div>
+                                <div class="skeleton-info"></div>
+                            </div>
+                            <br>
+                            <div class="skeleton-button"></div>
+                        </div>
+                        <div class="vps-card ${server.style}" style="display: none;">
+                            <div class="vps-card-header">
+                                <i class="fa-duotone fa-solid fa-server"></i>
+                                <h1>${server.title}</h1>
+                                <h2>${server.subtitle}</h2>
+                            </div>
+                            <div class="vps-card-price">
+                                <h1>Starting at</h1>
+                                <h2>$${server.price}/mo</h2>
+                                <h3>SAVE 50% OVER MONTHLY</h3>
+                            </div>
+                            <div class="vps-card-info">
+                                <h1>${server.cpu}</h1>
+                                <h1>${server.ram}</h1>
+                                <h1>${server.storage}</h1>
+                                <h1>${server.traffic}</h1>
+                                <h1>${server.ddos}</h1>
+                            </div>
+                            <br>
+                            <a  class="vps-card-button" href="/paygate?plan=${server.id}">اطلب الان</a>
+                        </div>
+                        `);
+                })
+            })
+        </script>
+    </center>
+    <%- include('../../partial/footer.ejs') %>

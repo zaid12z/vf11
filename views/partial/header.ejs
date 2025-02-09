@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.2.0/css/pro.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet"></link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="../home/css/main.css">
+    <!-- Your code -->
+    <link rel="stylesheet " href="../home/css/bootstrap.min.css" type="text/css">
+
+    <link rel="stylesheet " href="../home/css/font-awesome.min.css " type="text/css ">
+    <link rel="stylesheet " href="../home/css/elegant-icons.css " type="text/css ">
+    <link rel="stylesheet " href="../home/css/flaticon.css " type="text/css ">
+    <link rel="stylesheet " href="../home/css/owl.carousel.min.css " type="text/css ">
+    <link rel="stylesheet " href="../home/css/slicknav.min.css " type="text/css ">
+    <link rel="stylesheet " href="../home/css/style.css " type="text/css ">
+    <!-- Google Font -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <div class="header">
+            <div class="header-intraction">
+                <a class="intract menu-show" style="width: 140px; float: right;display: none;">
+                    <div class="intract-text">
+                        <h1>القائمة</h1>
+                    </div>
+                    <div class="intract-icon">
+                        <i class="fa-duotone fa-solid fa-bars"></i>
+                    </div>
+                </a>
+                <div class="main-items">
+                    <a href="/" class="intract" data-page="main">
+                        <div class="intract-text">
+                            <h1>الرئيسية</h1>
+                        </div>
+                        <div class="intract-icon">
+                            <i class="fa-duotone fa-solid fa-house"></i>
+                        </div>
+                    </a>
+                    <a class="intract" id="servers-button" data-page="server">
+                        <div class="intract-text">
+                            <h1>الخوادم</h1>
+                        </div>
+                        <div class="intract-icon">
+                            <i class="fa-duotone fa-solid fa-server"></i>
+                        </div>
+                    </a>
+                    <div class="sub-menu" id="servers-menu" style="display: none;">
+                        <a href="/servers/basic-vps" class="intract" data-page="basic-vps">الخوادم الاقتصادية <i class="fa-duotone fa-solid fa-fire" style="position: absolute; left: 10px;top: -5px;"></i></a>
+                        <a href="/servers/pro-vps" class="intract" data-page="pro-vps">الخوادم الاحترافية <i class="fa-sharp-duotone fa-solid fa-bars-progress" style="position: absolute; left: 10px;top: -5px;"></i></a>
+                        <a href="/servers/dedicated-vps" class="intract" data-page="dedicated-vps">الخوادم الافتراضية <i class="fa-solid fa-shield-halved" style="position: absolute; left: 10px;top: -5px;"></i></a>
+                        <a href="/servers/custom-vps" class="intract" data-page="custom-vps">صمم خادمك الخاص <i class="fa-duotone fa-solid fa-signature-lock" style="position: absolute; left: 10px;top: -5px;"></i></a>
+                    </div>
+                    <a class="intract" data-page="policies" id="more-button">
+                        <div class="intract-text">
+                            <h1>المعلومات</h1>
+                        </div>
+                        <div class="intract-icon">
+                            <i class="fa-duotone fa-solid fa-file-contract"></i>
+                        </div>
+                    </a>
+                    <div class="sub-menu more-sub" id="more-menu" style="display: none;">
+                        <a href="/policies" class="intract" data-page="policies">سياسات الموقع <i class="fa-duotone fa-solid fa-landmark" style="position: absolute; left: 10px;top: -5px;"></i></a>
+                        <a href="/contactus" class="intract" data-page="contactus">التواصل <i class="fa-duotone fa-solid fa-circle-phone" style="position: absolute; left: 10px;top: -5px;"></i></a>
+                        <a href="/" class="intract" data-page="">من نحن؟ <i class="fa-duotone fa-solid fa-users" style="position: absolute; left: 10px;top: -5px;"></i></a>
+                    </div>
+                    <% if (!req.session.user) { %>
+                        <!-- If user is not logged in, show the register button -->
+                        <a href="/login" class="intract" data-page="login">
+                            <div class="intract-text">
+                                <h1>التسجيل</h1>
+                            </div>
+                            <div class="intract-icon">
+                                <i class="fa-duotone fa-solid fa-right-to-bracket"></i>
+                            </div>
+                        </a>
+                        <% }
+                        
+                        else
+                        {
+                            %>
+                            <a class="intract" id="users-button">
+                                <div class="intract-text">
+                                    <h1 style="font-family: 'Cairo' !important;">
+                                        <%= req.session.user.username %>
+                                    </h1>
+                                </div>
+                                <div class="intract-icon">
+                                    <i class="fa-duotone fa-solid fa-user"></i>
+                                </div>
+                            </a>
+                            <div class="sub-menu users-sub" id="users-menu" style="display: none;">
+                                <% if (req.session.user.role == "admin") { %>
+                                    <a href="/admin/controlpanel" class="intract" data-page="controlpanel">لوحة تحكم الموقع <i class="fa-duotone fa-solid fa-briefcase" style="position: absolute; left: 10px;top: -5px;"></i></a>
+                                    <% }%>
+                                        <a href="/account" class="intract" data-page="account">الحساب <i class="fa-duotone fa-solid fa-address-card" style="position: absolute; left: 10px;top: -5px;"></i></a>
+                                        <a class="intract logout-btn">تسجيل الخروج <i class="fa-duotone fa-solid fa-right-from-bracket" style="position: absolute; left: 10px;top: -5px;"></i></a>
+                            </div>
+                            <%
+                        }
+                        %>
+                </div>
+
+            </div>
+            <div class="logo">
+                <a href="/"></a>
+                <img src="../home/img/logo.png" alt="">
+            </div>
+        </div>
+    </center>
+
+    <div class="notifys">
+    </div>
+    <div class="current-page" data-current="<%= currentPage %>"></div>
+
+</body>
+
+<div class="hexagon" aria-label="Animated hexagonal ripples" style="display: none;">
+    <div class="hexagon__group">
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+    </div>
+    <div class="hexagon__group">
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+    </div>
+    <div class="hexagon__group">
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+    </div>
+    <div class="hexagon__group">
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+    </div>
+    <div class="hexagon__group">
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+    </div>
+    <div class="hexagon__group">
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+        <div class="hexagon__sector"></div>
+    </div>
+</div>
+
+<style>
+     :root {
+        --bg: #3b6bff;
+        --fg: #3b6bff;
+        --dur: 8s;
+    }
+    
+    .hexagon {
+        margin-bottom: 1.5em;
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        z-index: 10000;
+        background-color: #e3e4e8e5;
+    }
+    
+    .hexagon__group,
+    .hexagon__sector,
+    .hexagon__sector:before,
+    .hexagon__sector:after {
+        position: absolute;
+    }
+    
+    .hexagon__group {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hexagon__group:nth-child(2) .hexagon__sector,
+    .hexagon__group:nth-child(2) .hexagon__sector:before,
+    .hexagon__group:nth-child(2) .hexagon__sector:after {
+        animation-delay: calc(var(--dur) * -1/6);
+    }
+    
+    .hexagon__group:nth-child(3) .hexagon__sector,
+    .hexagon__group:nth-child(3) .hexagon__sector:before,
+    .hexagon__group:nth-child(3) .hexagon__sector:after {
+        animation-delay: calc(var(--dur) * -2/6);
+    }
+    
+    .hexagon__group:nth-child(4) .hexagon__sector,
+    .hexagon__group:nth-child(4) .hexagon__sector:before,
+    .hexagon__group:nth-child(4) .hexagon__sector:after {
+        animation-delay: calc(var(--dur) * -3/6);
+    }
+    
+    .hexagon__group:nth-child(5) .hexagon__sector,
+    .hexagon__group:nth-child(5) .hexagon__sector:before,
+    .hexagon__group:nth-child(5) .hexagon__sector:after {
+        animation-delay: calc(var(--dur) * -4/6);
+    }
+    
+    .hexagon__group:nth-child(6) .hexagon__sector,
+    .hexagon__group:nth-child(6) .hexagon__sector:before,
+    .hexagon__group:nth-child(6) .hexagon__sector:after {
+        animation-delay: calc(var(--dur) * -5/6);
+    }
+    
+    .hexagon__group:nth-child(odd) {
+        transform: rotate(30deg);
+    }
+    
+    .hexagon__sector,
+    .hexagon__sector:before,
+    .hexagon__sector:after {
+        animation-duration: var(--dur);
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        /*animation-play-state: paused;*/
+        width: 0.2em;
+        height: 0.2em;
+    }
+    
+    .hexagon__sector {
+        animation-name: moveOut1;
+        top: calc(50% - 0.1em);
+        left: calc(50% - 0.1em);
+    }
+    
+    .hexagon__sector:nth-child(2) {
+        animation-name: moveOut2;
+    }
+    
+    .hexagon__sector:nth-child(3) {
+        animation-name: moveOut3;
+    }
+    
+    .hexagon__sector:nth-child(4) {
+        animation-name: moveOut4;
+    }
+    
+    .hexagon__sector:nth-child(5) {
+        animation-name: moveOut5;
+    }
+    
+    .hexagon__sector:nth-child(6) {
+        animation-name: moveOut6;
+    }
+    
+    .hexagon__sector:before,
+    .hexagon__sector:after {
+        animation-name: ripple;
+        background-color: #3b6bff;
+        border-radius: 0.1em;
+        content: "";
+        display: block;
+        top: 0;
+        left: 0;
+        transform-origin: 0.1em 0.1em;
+    }
+    
+    .hexagon__sector:before {
+        transform: rotate(-30deg)
+    }
+    
+    .hexagon__sector:after {
+        transform: rotate(-150deg)
+    }
+    /* Dark theme */
+    
+    @media (prefers-color-scheme: dark) {
+         :root {
+            --bg: #17181c;
+            --fg: #e3e4e8;
+        }
+    }
+    /* Animations */
+    
+    @keyframes moveOut1 {
+        from {
+            transform: translateY(0) scale(0);
+        }
+        3% {
+            transform: translateY(0.2em) scale(1);
+        }
+        97% {
+            transform: translateY(7.3em) scale(1);
+        }
+        to {
+            transform: translateY(7.5em) scale(0);
+        }
+    }
+    
+    @keyframes moveOut2 {
+        from {
+            transform: rotate(60deg) translateY(0) scale(0);
+        }
+        3% {
+            transform: rotate(60deg) translateY(0.2em) scale(1);
+        }
+        97% {
+            transform: rotate(60deg) translateY(7.3em) scale(1);
+        }
+        to {
+            transform: rotate(60deg) translateY(7.5em) scale(0);
+        }
+    }
+    
+    @keyframes moveOut3 {
+        from {
+            transform: rotate(120deg) translateY(0) scale(0);
+        }
+        3% {
+            transform: rotate(120deg) translateY(0.2em) scale(1);
+        }
+        97% {
+            transform: rotate(120deg) translateY(7.3em) scale(1);
+        }
+        to {
+            transform: rotate(120deg) translateY(7.5em) scale(0);
+        }
+    }
+    
+    @keyframes moveOut4 {
+        from {
+            transform: rotate(180deg) translateY(0) scale(0);
+        }
+        3% {
+            transform: rotate(180deg) translateY(0.2em) scale(1);
+        }
+        97% {
+            transform: rotate(180deg) translateY(7.3em) scale(1);
+        }
+        to {
+            transform: rotate(180deg) translateY(7.5em) scale(0);
+        }
+    }
+    
+    @keyframes moveOut5 {
+        from {
+            transform: rotate(240deg) translateY(0) scale(0);
+        }
+        3% {
+            transform: rotate(240deg) translateY(0.2em) scale(1);
+        }
+        97% {
+            transform: rotate(240deg) translateY(7.3em) scale(1);
+        }
+        to {
+            transform: rotate(240deg) translateY(7.5em) scale(0);
+        }
+    }
+    
+    @keyframes moveOut6 {
+        from {
+            transform: rotate(300deg) translateY(0) scale(0);
+        }
+        3% {
+            transform: rotate(300deg) translateY(0.2em) scale(1);
+        }
+        97% {
+            transform: rotate(300deg) translateY(7.3em) scale(1);
+        }
+        to {
+            transform: rotate(300deg) translateY(7.5em) scale(0);
+        }
+    }
+    
+    @keyframes ripple {
+        from,
+        to {
+            width: 0.2em;
+        }
+        33% {
+            width: 2.4em;
+        }
+    }
+</style>
+
+</html>
+
+<script src="../home/js/main.js"></script>
+<% if (typeof Notify !== 'undefined' && Notify !== null) { %>
+    <div class="req-notify" data-type="<%= Notify.type %>" data-title="<%= Notify.title %>" data-body="<%= Notify.body %>"></div>
+    <script>
+        Web.Notify(
+            $('.req-notify').data('type'),
+            $('.req-notify').data('title'),
+            $('.req-notify').data('body'),
+            3000
+        );
+    </script>
+    <% } %>

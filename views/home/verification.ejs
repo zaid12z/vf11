@@ -1,0 +1,361 @@
+<%- include('../partial/header.ejs') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <div class="page-location">
+            <h1>
+                <%- page.main %>
+            </h1>
+        </div>
+    </center>
+    <br>
+    <br>
+    <div class="otp-verification-container">
+        <div class="otp-verification-card">
+            <div class="otp-card-header">
+                <div class="otp-progress-bar"></div>
+                <div class="otp-icon-wrapper">
+                    <i class="bx bxs-check-shield"></i>
+                </div>
+                <p class="otp-subtitle">ادخل الرمز المرسل الى ايميلك</p>
+            </div>
+
+            <div class="otp-input-wrapper">
+                <div class="otp-input-field">
+                    <input type="number" maxlength="1" class="otp-input" />
+                    <input type="number" maxlength="1" disabled class="otp-input" />
+                    <input type="number" maxlength="1" disabled class="otp-input" />
+                    <input type="number" maxlength="1" disabled class="otp-input" />
+                </div>
+            </div>
+
+            <div class="otp-resend-wrapper">
+                <a class="otp-resend-link disabled">ارسال الرمز مرة اخرى</a>
+                <span class="otp-timer" id="timer"></span>
+            </div>
+
+            <button class="otp-verification-btn">
+            <span class="otp-btn-text">التحقق</span>
+            <i class="bx bx-right-arrow-alt"></i>
+        </button>
+        </div>
+    </div>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+        .otp-verification-container * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .otp-verification-container {
+            width: 100%;
+            padding: 20px;
+            min-height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .otp-verification-card {
+            background: white;
+            max-width: 400px;
+            border-radius: 20px;
+            padding: 40px 70px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+        
+        .otp-progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #1d55ff, #4f7dff);
+            border-radius: 4px;
+        }
+        
+        .otp-card-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .otp-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1d55ff, #4f7dff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 20px rgba(29, 85, 255, 0.2);
+        }
+        
+        .otp-icon-wrapper i {
+            font-size: 40px;
+            color: white;
+        }
+        
+        .otp-title {
+            color: #2c3345;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .otp-subtitle {
+            color: #6b7280;
+            font-size: 16px;
+        }
+        
+        .otp-input-wrapper {
+            margin: 30px 0;
+        }
+        
+        .otp-input-field {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            direction: ltr;
+        }
+        
+        .otp-input {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            color: #2c3345;
+            transition: all 0.3s ease;
+        }
+        
+        .otp-input:focus {
+            border-color: #1d55ff;
+            box-shadow: 0 0 0 3px rgba(29, 85, 255, 0.1);
+            outline: none;
+        }
+        
+        .otp-input::-webkit-inner-spin-button,
+        .otp-input::-webkit-outer-spin-button {
+            display: none;
+        }
+        
+        .otp-resend-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .otp-resend-link {
+            color: #1d55ff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .otp-resend-link.disabled {
+            color: #a0aec0;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .otp-resend-link:not(.disabled):hover {
+            color: #0e4bf1;
+        }
+        
+        .otp-timer {
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        .otp-verification-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: #acc2ff;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            pointer-events: none;
+        }
+        
+        .otp-verification-btn.actived {
+            background: linear-gradient(135deg, #1d55ff, #4f7dff);
+            pointer-events: auto;
+        }
+        
+        .otp-verification-btn.actived:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(29, 85, 255, 0.2);
+        }
+        
+        .otp-verification-btn i {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .otp-verification-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        @media (max-width: 480px) {
+            .otp-verification-card {
+                padding: 30px 20px;
+            }
+            .otp-input {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+    <script>
+        const inputs = document.querySelectorAll(".otp-input"),
+            button = document.querySelector(".otp-verification-btn"),
+            resendLink = document.querySelector(".otp-resend-link");
+
+        inputs.forEach((input, index1) => {
+            input.addEventListener("keyup", (e) => {
+                const currentInput = input,
+                    nextInput = input.nextElementSibling,
+                    prevInput = input.previousElementSibling;
+
+                if (currentInput.value.length > 1) {
+                    currentInput.value = "";
+                    return;
+                }
+
+                if (nextInput && nextInput.hasAttribute("disabled") && currentInput.value !== "") {
+                    nextInput.removeAttribute("disabled");
+                    nextInput.focus();
+                }
+
+                if (e.key === "Backspace") {
+                    inputs.forEach((input, index2) => {
+                        if (index1 <= index2 && prevInput) {
+                            input.setAttribute("disabled", true);
+                            input.value = "";
+                            prevInput.focus();
+                        }
+                    });
+                }
+
+                if (!inputs[3].disabled && inputs[3].value !== "") {
+                    button.classList.add("actived");
+                    return;
+                }
+                button.classList.remove("actived");
+            });
+        });
+
+        window.addEventListener("load", () => {
+            inputs[0].focus();
+        });
+
+        let timeLeft = 120;
+        let countdown;
+        const timerElement = document.getElementById('timer');
+
+        function startTimer() {
+            clearInterval(countdown);
+            timeLeft = 120;
+            timerElement.textContent = `[${timeLeft}s]`;
+            resendLink.classList.add('disabled');
+
+            countdown = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = `[${timeLeft}s]`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    timerElement.textContent = '';
+                    resendLink.classList.remove('disabled');
+                }
+            }, 1000);
+        }
+
+        // Start the timer when the page loads
+        startTimer();
+
+        $(document).on("click", ".otp-resend-link:not(.disabled)", (e) => {
+            startTimer();
+            // Here you would typically make an API call to resend the code
+            // For now, we'll just show an alert
+            alert('تم إرسال الرمز مرة أخرى');
+        });
+
+        $(document).on("click", ".otp-verification-btn", (data) => {
+            let code = '';
+            inputs.forEach((input) => {
+                code += input.value;
+            });
+
+            if (!button.classList.contains('actived')) {
+                return;
+            }
+
+            data.preventDefault();
+            $.ajax({
+                url: '/get-csrf-token',
+                type: 'GET',
+                success: function(response) {
+                    const csrfToken = response.csrfToken;
+
+                    const formData = {
+                        code: code,
+                    };
+
+                    button.classList.add('loading');
+
+                    $.ajax({
+                        url: '/api/verification',
+                        type: 'POST',
+                        headers: {
+                            'X-CSRF-Token': csrfToken
+                        },
+                        data: formData,
+                        success: function(response) {
+                            if (response.success) {
+                                Web.Notify('success', 'نجاح', response.message, 4000);
+                                setTimeout(() => {
+                                    location.reload(); // Reload after success
+                                }, 3000);
+                            } else {
+                                Web.Notify('error', 'خطاء', response.message);
+                            }
+                            button.classList.remove('loading');
+                        },
+                        error: function(error) {
+                            Web.Notify('error', 'خطاء', error);
+                            button.classList.remove('loading');
+                        }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    Web.Notify('error', 'خطاء', error);
+                }
+            });
+        });
+    </script>
+
+    <%- include('../partial/footer.ejs') %>
